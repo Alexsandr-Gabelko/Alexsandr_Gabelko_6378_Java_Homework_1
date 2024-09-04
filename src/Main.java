@@ -1,15 +1,44 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.ArrayList;
+import java.util.List;
+
+//Создать наследника реализованного класса ГорячийНапиток с дополнительным полем int
+//температура.
+//Создать класс ГорячихНапитковАвтомат реализующий интерфейс ТорговыйАвтомат и реализовать
+//перегруженный метод getProduct(int name, int volume, int temperature) выдающий продукт
+//        соответствующий имени, объему и температуре
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        HotDrink coffee = new HotDrink("Кофе", 25, 200, 80);
+        HotDrink tea = new HotDrink("Чай", 15, 300, 60);
+        HotDrink compote = new HotDrink("Компот", 5, 250, 50);
+
+        System.out.println(coffee);
+        System.out.println(tea);
+        System.out.println(compote);
+
+        List  products = new ArrayList<>();
+
+        products.add(coffee);
+        products.add(tea);
+        products.add(compote);
+
+        HotDrinksVendingMachine hotDrinks = new HotDrinksVendingMachine(products);
+
+
+        System.out.println("-------------------------------") ;
+        System.out.println("Состав продуктов в 'Автомате горячих напитков' :") ;
+        System.out.println(products + "\n");
+        System.out.println("-------------------------------") ;
+        System.out.println(hotDrinks.getProduct("Кофе")) ;
+        System.out.println(hotDrinks.getProduct("Кофе", 200, 80)) ;
+        System.out.println(hotDrinks.getProduct("Кофе", 200, 50)) ;
+        System.out.println(hotDrinks.getProduct("Чай", 300, 60)) ;
+        System.out.println(hotDrinks.getProduct("Ликёр"));
+
+
     }
+
+
 }
